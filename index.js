@@ -28,6 +28,11 @@ function CDNUp(bucket, options) {
   this.bucket = bucket;
   this.client = pkgcloud.storage.createClient(options.pkgcloud || {});
   this.acl = options.acl || 'public-read';
+  this.concurrency = options.concurrency || options.conc;
+  //
+  // The size of each piece we upload that we want to buffer into memory
+  //
+  this.partSize = options.partSize;
 }
 
 //

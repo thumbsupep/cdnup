@@ -39,6 +39,8 @@ File.prototype.create = function create(what, as, fn) {
     reads(what)
       .pipe(file.client.upload({
         acl: file.cdn.acl,
+        concurrency: file.cdn.concurrency,
+        partSize: file.cdn.partSize,
         container: file.cdn.bucket,
         remote: as,
         contentType: type
